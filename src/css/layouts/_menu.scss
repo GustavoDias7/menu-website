@@ -1,0 +1,41 @@
+.menu {
+  $width: 320px;
+  position: fixed;
+  top: 0px;
+  right: -$width;
+  z-index: 2;
+  padding: 2rem;
+  @include max-width($width);
+  height: 100vh;
+  background-color: $neutral-color-50;
+  box-shadow: $primary-box-shadow;
+  transition: right $primary-transition;
+
+  &.active {
+    top: 0px;
+    right: 0px;
+  }
+
+  .menu-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 0px;
+    @include reset-button;
+    @include square(20px);
+    @include background-image(pathImages("close.svg"));
+  }
+
+  nav {
+    .link {
+      display: block;
+      width: fit-content;
+      color: $primary-color-600;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

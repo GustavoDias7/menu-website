@@ -1,0 +1,18 @@
+{% extends "../bases/base.njk" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block css %}index{% endblock %}
+{% block js %}index{% endblock %}
+
+{% block content %}
+  {% include "../layouts/contact_bar.html" %}
+  {% include "../layouts/header.html" %}
+  {% include "../layouts/menu.html" %}
+  {% include "../layouts/banner.html" %}
+  {% include "../layouts/about/primary.html" %}
+  {% include "../layouts/products.html" %}
+  {% include "../layouts/about/secondary.html" %}
+  {% include "../layouts/contacts.html" %}
+  {% include "../layouts/footer.html" %}
+{% endblock %}
