@@ -1,0 +1,20 @@
+<section class="section" id="faq">
+  <div class="container md:container">
+    <h2 class="text-2xl sm:text-3xl text-color-primary text-align-center text-mb-2 sm:text-mb-4">
+      Perguntas Frequentes
+    </h2>
+    {% for f in faq %}
+    <button class="accordion secondary" :class="{active: {{f.id}} == accordion.index}"
+      @click="handleAccordion({{f.id}})">
+      <div class="label">
+        <h3>{{f.question}}</h3> <span class="arrow"></span>
+      </div>
+      <div class="content">
+        <div>
+          <p>{{f.response}}</p>
+        </div>
+      </div>
+    </button>
+    {% endfor %}
+  </div>
+</section>

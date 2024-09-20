@@ -4,6 +4,10 @@ const mainMixin = {
       modal: {
         menu: false,
       },
+      accordion: {
+        state: false,
+        index: null,
+      },
     };
   },
   methods: {
@@ -13,9 +17,26 @@ const mainMixin = {
     closeModal(name = "") {
       this.modal[name] = false;
     },
+    handleAccordion(index) {
+      if (this.accordion.state == false) {
+        this.accordion.state = true;
+        this.accordion.index = index;
+      } else if (
+        this.accordion.state == true &&
+        this.accordion.index == index
+      ) {
+        this.accordion.state = false;
+        this.accordion.index = null;
+      } else if (
+        this.accordion.state == true &&
+        this.accordion.index != index
+      ) {
+        this.accordion.index = index;
+      }
+    },
     active(data) {
-      return {active: data !== ""}
-    }
+      return { active: data !== "" };
+    },
   },
 };
 

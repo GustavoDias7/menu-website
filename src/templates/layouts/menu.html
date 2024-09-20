@@ -1,8 +1,10 @@
 <aside class="menu" :class="{active: modal.menu}">
   <button class="menu-button" @click="closeModal('menu')">Close menu</button>
   <nav>
-    <a class="link" href="/">Home</a>
-    <a class="link" href="/">About</a>
-    <a class="link" href="/">Contact</a>
+    <a class="link" href="#about1" @click="closeModal('menu')">Sobre Nós</a>
+    <a class="link" href="#products" @click="closeModal('menu')">Produtos</a>
+    <a class="link" href="#about2" @click="closeModal('menu')">About 2</a>
+    <a class="link" href="#faq" @click="closeModal('menu')">Perguntas</a>
+    <a class="link" href="#contacts" @click="closeModal('menu')">Contatos</a>
   </nav>
 </aside>

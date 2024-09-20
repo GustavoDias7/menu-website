@@ -6,13 +6,12 @@ const app = createApp({
   mixins: [mainMixin],
   delimiters: ["[[", "]]"],
   setup() {
-    return {}
+    return {};
   },
   data() {
     return {};
   },
   methods: {},
 });
-
 
 app.mount("#app");

@@ -5,6 +5,7 @@ const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
 const { getPaths } = require("./utils/recursive-path.js");
 const { DefinePlugin } = require("webpack");
 const NunjucksWebpackPlugin = require("nunjucks-webpack-plugin");
+const { context } = require("./utils/constantes.js");
 const WatchExternalFilesPlugin = require("webpack-watch-files-plugin").default;
 
 module.exports = {
@@ -19,9 +20,7 @@ module.exports = {
   },
 
   entry: globAll
-    .sync([
-      "./src/**/pages/**/*.{js,css,scss}",
-    ])
+    .sync(["./src/**/pages/**/*.{js,css,scss}"])
     .reduce((obj, el = "") => {
       const name = path.parse(el).name;
       if (!obj[name]) obj[name] = [];
@@ -33,7 +32,7 @@ module.exports = {
     path: path.resolve(__dirname, "./staticfiles/js/pages/"),
     publicPath: "/",
     filename: "[name].js",
-    clean: true
+    clean: true,
   },
 
   module: {
@@ -65,7 +64,7 @@ module.exports = {
         generator: {
           emit: false,
           filename: "img/[name][ext]",
-        }
+        },
       },
     ],
   },
@@ -93,7 +92,7 @@ module.exports = {
     }),
 
     new WatchExternalFilesPlugin({
-      files: ["./src/templates/**/{*,**/*}.{html,njk}"]
+      files: ["./src/templates/**/{*,**/*}.{html,njk}"],
     }),
 
     new NunjucksWebpackPlugin({
@@ -103,9 +102,8 @@ module.exports = {
           name === "index"
             ? `../../${name}.html`
             : `../../${path.parse(src).name}/index.html`;
-        return { from: src, to: to };
+        return { from: src, to, context };
       }),
     }),
-    
   ],
 };
