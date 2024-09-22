@@ -31,6 +31,62 @@ const context = {
         "Nossos sabores mais populares incluem a clássica Margherita, Pepperoni, e a Pizza de Frango com Catupiry. Além disso, temos combinações exclusivas que mudam semanalmente! Não deixe de experimentar nossos sabores sazonais e pedir sugestões ao nosso time, sempre prontos para ajudar na escolha!",
     },
   ],
+  products: [
+    {
+      code: "pizzas",
+      title: "Pizzas",
+      items: [
+        {
+          id: 0,
+          name: "Margherita",
+          price: "R$ 74,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Margherita",
+        },
+        {
+          id: 1,
+          name: "Calabresa",
+          price: "R$ 84,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Calabresa",
+        },
+        {
+          id: 2,
+          name: "Quatro Queijos",
+          price: "R$ 89,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Quatro Queijos",
+        },
+      ],
+    },
+    {
+      code: "drinks",
+      title: "Bebidas",
+      items: [
+        {
+          id: 3,
+          name: "Coca Cola 2L",
+          price: "R$ 4,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Coca Cola",
+        },
+        {
+          id: 4,
+          name: "Pepsi 2L",
+          price: "R$ 5,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Pepsi",
+        },
+        {
+          id: 5,
+          name: "Guaraná Antarctica 2L",
+          price: "R$ 3,99",
+          img: "../../img/chad-montano-MqT0asuoIcU-unsplash.jpg",
+          link: "https://wa.me/552199999999?text=Guaraná Antarctica",
+        },
+      ],
+    },
+  ],
 };
 
 module.exports = { context };

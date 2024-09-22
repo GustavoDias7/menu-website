@@ -2,11 +2,11 @@
   @include max-width(272px, true);
   color: $neutral-color-700;
   background-color: $neutral-color-50;
-  box-shadow: $tertiary-box-shadow;
+  box-shadow: $box-shadow-200;
 
   $mb: 16px;
 
-  > a {
+  >a {
     font-size: 0;
   }
 

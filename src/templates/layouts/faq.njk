@@ -7,11 +7,11 @@
     <button class="accordion secondary" :class="{active: {{f.id}} == accordion.index}"
       @click="handleAccordion({{f.id}})">
       <div class="label">
-        <h3>{{f.question}}</h3> <span class="arrow"></span>
+        <h3 class="text-lg sm:text-xl">{{f.question}}</h3> <span class="arrow"></span>
       </div>
       <div class="content">
         <div>
-          <p>{{f.response}}</p>
+          <p class="text-base sm:text-lg">{{f.response}}</p>
         </div>
       </div>
     </button>
