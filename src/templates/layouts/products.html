@@ -9,6 +9,8 @@
         {% for card in category.items %}
         <div class="g-item-12 sm:g-item-6 md:g-item-4">
           <article class="card secondary">
+            <p class="cart-count" :class="{active: cart.getCount('{{card.id}}')}" v-text="cart.getCount('{{card.id}}')">
+            </p>
             <a href="/produto?id={{card.id}}">
               <figure class="aspect-ratio aspect-1-1 fit">
                 <img src="{{card.img}}" alt="Card Image" />
@@ -16,8 +18,13 @@
             </a>
             <div class="description">
               <h3 class="text-xl text-color-primary">{{card.name}}</h3>
-              <p class="price text-lg">{{card.price}}</p>
-              <a class="gn-button pm-button small full" href="{{card.link}}" target="_blank">Pedir agora</a>
+              <p class="price text-lg">{{card.fprice}}</p>
+              <button class="gn-button pm-button small full" @click="cart.addItem(
+                  '{{card.id}}',
+                  '{{card.name}}',
+                  '{{card.price}}',
+                  '{{card.img}}',
+                )">Adicionar ao carrinho</button>
             </div>
           </article>
         </div>
