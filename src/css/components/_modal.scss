@@ -1,5 +1,6 @@
 .modal {
   position: fixed;
+  z-index: 3;
   @include insert;
   @include opacity(false);
   transition: $primary-transition;
@@ -119,6 +120,7 @@
       }
 
       .cart-item-center {
+        flex: auto;
 
         h3,
         .counter {
