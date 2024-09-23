@@ -8,8 +8,14 @@
         <a class="link" href="#drinks">Bebidas</a>
         <a class="link" href="#faq">Perguntas</a>
         <a class="link" href="#contacts">Contatos</a>
+        <a class="" href="/" @click.prevent="openCart">
+          <span class="badge active">
+            <p class="badge-item" v-text="cart.totalCount(99)"></p>
+            <img src="../../img/shopping-cart.svg" alt="Carrinho" />
+          </span>
+        </a>
+        <button class="menu-button" @click="openModal('menu')">Open menu</button>
       </nav>
-      <button class="menu-button" @click="openModal('menu')">Open menu</button>
     </div>
   </div>
 </header>

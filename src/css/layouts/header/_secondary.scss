@@ -36,7 +36,7 @@
 
 @include md {
   .header.secondary {
-    nav {
+    nav .link {
       display: none;
     }
 
