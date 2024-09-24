@@ -6,14 +6,14 @@ class ShoppingCart {
   itemFactory(obj) {
     const item = {};
 
-    if (obj?.id) item["id"] = Number(obj.id);
-    if (obj?.name) item["name"] = obj.name;
-    if (obj?.price) {
+    if (Object.hasOwn(obj, "id")) item["id"] = Number(obj.id);
+    if (Object.hasOwn(obj, "name")) item["name"] = obj.name;
+    if (Object.hasOwn(obj, "price")) {
       item["price"] = Number(obj.price);
       item["fprice"] = (item.price / 100).toFixed(2).replace(".", ",");
     }
-    if (obj?.count) item["count"] = Number(obj.count);
-    if (obj?.img) item["img"] = obj.img;
+    if (Object.hasOwn(obj, "count")) item["count"] = Number(obj.count);
+    if (Object.hasOwn(obj, "img")) item["img"] = obj.img;
 
     return item;
   }
@@ -59,7 +59,7 @@ class ShoppingCart {
     const item = this.itemFactory({ id, count });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
-      console.warn(`The cart item if "${id}" id, does not exist!`);
+      console.warn(`The cart item with "${id}" id, does not exist!`);
     } else {
       this.cart[itemIndex].count = item.count;
     }
@@ -84,8 +84,6 @@ class ShoppingCart {
   }
   addItem(id, name, price, img) {
     const item = this.itemFactory({ id, name, price, count: 1, img });
-    console.log(item);
-
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
       this.cart.push(item);
@@ -98,7 +96,7 @@ class ShoppingCart {
     const item = this.itemFactory({ id });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
-      console.warn(`The cart item if "${id}" id, does not exist!`);
+      console.warn(`The cart item with "${id}" id, does not exist!`);
     } else {
       if (this.cart[itemIndex].count > 1) {
         this.decrementCount(itemIndex);
@@ -110,7 +108,7 @@ class ShoppingCart {
     const item = this.itemFactory({ id });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
-      console.warn(`The cart item if "${id}" id, does not exist!`);
+      console.warn(`The cart item with "${id}" id, does not exist!`);
     } else {
       this.cart.splice(itemIndex, 1);
     }
