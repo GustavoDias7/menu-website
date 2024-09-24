@@ -1,0 +1,38 @@
+.footer.secondary {
+  background-color: $primary-color-600;
+
+  p,
+  h3,
+  strong,
+  img {
+    color: $neutral-color-50 !important;
+  }
+
+  .container {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .footer-top {
+    .line {
+      background-color: #ffffff;
+    }
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid $neutral-color-50;
+    margin: 32px 0px;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+
+  @include md {
+    .container {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+  }
+}
