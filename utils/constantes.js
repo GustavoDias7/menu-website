@@ -1,4 +1,9 @@
+const path = require("path");
+
 const context = {
+  static(filename) {
+    return path.resolve("/", filename);
+  },
   faq: [
     {
       id: 0,
