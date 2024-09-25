@@ -18,15 +18,19 @@
                   </header>
                   <section>
                     <ul>
-                      <li class="text-base"> <strong>Descrição:</strong> <span v-text="product.description"></span>
+                      <li class="text-base text-mb-2"> <strong>Descrição:</strong> <span
+                          v-text="product.description"></span>
                       </li>
-                      <li class="text-base" v-if="product.discount"> <strong>Desconto:</strong> <span
-                          v-text="product.discount"></span>
+                      <li class="text-base text-mb-2" v-if="product.discount">
+                        <strong>Preço:</strong> <span v-text="product.fprice"></span>
+                      </li>
+                      <li class="text-base text-mb-2" v-if="product.discount">
+                        <strong>Desconto:</strong> <span v-text="product.fdiscount"></span>
                       </li>
                     </ul>
                   </section>
                   <footer>
-                    <li> <strong>Total:</strong> <span v-text="product.fprice"></span> </li>
+                    <li> <strong>Total:</strong> <span v-text="product.ftotal"></span> </li>
                   </footer>
                 </article>
                 <button class="gn-button pm-button full small sm:regular"

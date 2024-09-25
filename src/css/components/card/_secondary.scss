@@ -20,6 +20,19 @@
     margin-bottom: 4px;
   }
 
+  .price {
+    @include flex-align-center;
+    gap: 6px;
+  }
+
+  .discount {
+    user-select: none;
+    padding: 2px 4px;
+    color: $neutral-color-50;
+    background-color: $primary-color-600;
+    border-radius: 4px
+  }
+
   .cart-count {
     @include flex-center-center;
     position: absolute;

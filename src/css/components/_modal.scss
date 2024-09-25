@@ -126,6 +126,34 @@
         .counter {
           margin-bottom: 8px;
         }
+
+        h3 {
+          .discount {
+            user-select: none;
+            padding: 2px;
+            color: $neutral-color-50;
+            background-color: $primary-color-600;
+            border-radius: 4px;
+            margin-left: 6px;
+          }
+        }
+
+        s {
+          position: relative;
+          text-decoration: none;
+          margin-right: 12px;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: -4px;
+            display: inline-block;
+            width: calc(100% + 8px);
+            height: 2px;
+            background-color: $red-color-500;
+          }
+        }
       }
 
       .delete {

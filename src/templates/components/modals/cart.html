@@ -18,18 +18,26 @@
                 </figure>
               </a>
               <div class="cart-item-center">
-                <h3 class="text-sm" v-text="item.name"></h3>
+                <h3 class="text-sm">
+                  <span v-text="item.name"></span>
+                  <span v-if="cart.getDiscount(item.id)" v-text="cart.fgetDiscount(item.id)"
+                    class="discount text-xs"></span>
+                </h3>
                 <div class="counter small">
                   <button class="counter-button" @click="cart.removeItem(item.id)"
                     :disabled="cart.getCount(item.id) === 1">
                     <span class="sign minus"></span>
                   </button>
                   <p class="counter-input" v-text="cart.getCount(item.id)"></p>
-                  <button class="counter-button" @click="cart.addItem(item.id, item.name, item.price)">
+                  <button class="counter-button" @click="cart.addItem(item.id)">
                     <span class="sign"></span>
                   </button>
                 </div>
-                <p class="text-base">R$ <span v-text="item.fprice"></span></p>
+                <p class="text-base">
+                  <s v-if="cart.fgetPrice(item.id) !== cart.fgetPriceWithDiscount(item.id)"
+                    v-text="cart.fgetPrice(item.id)"></s>
+                  <span v-text="cart.fgetPriceWithDiscount(item.id)"></span>
+                </p>
               </div>
               <button class="delete" type="button" @click="cart.deleteItem(item.id)"></button>
             </div>
