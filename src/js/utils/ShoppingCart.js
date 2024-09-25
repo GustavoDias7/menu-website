@@ -128,6 +128,7 @@ class ShoppingCart {
     }
   }
   addItem(id, name, price, img, discount) {
+    this.syncCart();
     const item = this.itemFactory({ id, name, price, count: 1, img, discount });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) this.cart.push(item);
@@ -135,6 +136,7 @@ class ShoppingCart {
     this.setLocal();
   }
   removeItem(id) {
+    this.syncCart();
     const item = this.itemFactory({ id });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
@@ -147,6 +149,7 @@ class ShoppingCart {
     this.setLocal();
   }
   deleteItem(id) {
+    this.syncCart();
     const item = this.itemFactory({ id });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) {
@@ -175,6 +178,9 @@ class ShoppingCart {
   }
   getItemNames() {
     return this.cart.map((item) => `${item.name} (${item.count})`).join(", ");
+  }
+  syncCart() {
+    this.cart = this.getLocal();
   }
 }
 

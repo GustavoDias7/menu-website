@@ -20,6 +20,10 @@
     margin-bottom: 4px;
   }
 
+  .gn-button.sc-button {
+    margin-top: 8px;
+  }
+
   .price {
     @include flex-align-center;
     gap: 6px;

@@ -17,8 +17,9 @@
               </figure>
             </a>
             <div class="description">
-              <h3 class="text-xl text-color-primary">{{card.name}}</h3>
-
+              <a href="/product?id={{card.id}}">
+                <h3 class="text-xl text-color-primary">{{card.name}}</h3>
+              </a>
               <p class="price text-lg">
                 {{card.ftotal}}
                 {% if card.discount %}
@@ -32,6 +33,9 @@
                   '{{card.img}}',
                   '{{card.discount}}',
                 )">Adicionar ao carrinho</button>
+              <button class="gn-button sc-button small full" @click="openCart">
+                Abrir carrinho
+              </button>
             </div>
           </article>
         </div>

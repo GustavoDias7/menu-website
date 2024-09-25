@@ -22,13 +22,11 @@ const mainMixin = {
       this.modal[name] = false;
     },
     openCart() {
+      this.cart.syncCart();
       this.openModal("cart");
     },
     closeCart() {
       this.closeModal("cart");
-    },
-    addToCart(obj) {
-      this.cart.push(obj);
     },
     handleAccordion(index) {
       if (this.accordion.state == false) {
