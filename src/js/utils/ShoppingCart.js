@@ -14,6 +14,7 @@ class ShoppingCart {
     }
     if (Object.hasOwn(obj, "count")) item["count"] = Number(obj.count);
     if (Object.hasOwn(obj, "img")) item["img"] = obj.img;
+    if (Object.hasOwn(obj, "discount")) item["discount"] = Number(obj.discount);
 
     return item;
   }
@@ -26,25 +27,69 @@ class ShoppingCart {
   decrementCount(index) {
     this.cart[index].count -= 1;
   }
+  getDiscount(id) {
+    const item = this.itemFactory({ id });
+    const itemIndex = this.findItemIndex(item.id);
+    const discount = this.cart[itemIndex].discount;
+    return discount;
+  }
+  fgetDiscount(id) {
+    const discount = this.getDiscount(id);
+    return `-${discount * 100}%`;
+  }
+  getPrice(id) {
+    const item = this.itemFactory({ id });
+    const itemIndex = this.findItemIndex(item.id);
+    const price = this.cart[itemIndex].price;
+    return price;
+  }
+  fgetPrice(id) {
+    const price = this.getPrice(id);
+    return (price / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+  getPriceWithDiscount(id) {
+    const item = this.itemFactory({ id });
+    const itemIndex = this.findItemIndex(item.id);
+    const price = this.cart[itemIndex].price;
+    const discount = this.cart[itemIndex].discount;
+    return price - price * discount;
+  }
+  fgetPriceWithDiscount(id) {
+    const price = this.getPriceWithDiscount(id);
+    return (price / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
   totalPrice() {
     return (
-      this.cart.reduce((acc, curr) => acc + curr.price * curr.count, 0) +
-      this.fee
+      this.cart.reduce(
+        (acc, curr) =>
+          acc + (curr.price - curr.price * curr.discount) * curr.count,
+        0
+      ) + this.fee
     );
   }
   ftotalPrice() {
     const price = this.totalPrice();
     return (price / 100).toFixed(2).replace(".", ",");
   }
-  subTotalPrice() {
-    return this.cart.reduce((acc, curr) => acc + curr.price * curr.count, 0);
+  totalPriceItem(id) {
+    const item = this.itemFactory({ id });
+    const itemIndex = this.findItemIndex(item.id);
+    const price = this.cart[itemIndex].price;
+    const discount = this.cart[itemIndex].discount;
+    return (price - price * discount) * this.cart[itemIndex].count;
   }
-  fsubTotalPrice() {
-    const price = this.subTotalPrice();
-    return (price / 100).toFixed(2).replace(".", ",");
-  }
-  totalPriceItem(index) {
-    return this.cart[index].price * this.cart[index].count;
+  ftotalPriceItem(id) {
+    const price = this.totalPriceItem(id);
+    return (price / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
   }
   totalCount(limit = null) {
     const total = this.cart.reduce((acc, curr) => acc + curr.count, 0);
@@ -82,14 +127,11 @@ class ShoppingCart {
       this.fee = Number(value);
     }
   }
-  addItem(id, name, price, img) {
-    const item = this.itemFactory({ id, name, price, count: 1, img });
+  addItem(id, name, price, img, discount) {
+    const item = this.itemFactory({ id, name, price, count: 1, img, discount });
     const itemIndex = this.findItemIndex(item.id);
-    if (itemIndex === -1) {
-      this.cart.push(item);
-    } else {
-      this.incrementCount(itemIndex);
-    }
+    if (itemIndex === -1) this.cart.push(item);
+    else this.incrementCount(itemIndex);
     this.setLocal();
   }
   removeItem(id) {
