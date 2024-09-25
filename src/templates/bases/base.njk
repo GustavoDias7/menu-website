@@ -8,15 +8,20 @@
     {% block title %}Default title{% endblock %} | Pizzaria Nobreza
   </title>
   <link rel="stylesheet" href="../css/pages/{% block css %}{% endblock %}.css" />
-  <script defer src="../js/pages/{% block js %}{% endblock %}.js"></script>
 </head>
 
 <body>
   <div id="app">
+    {% include "../layouts/contact_bar.html" %}
+    {% include "../layouts/header.html" %}
+    {% include "../layouts/menu.html" %}
     {% block content %}{% endblock %}
+    {% include "../layouts/footer.html" %}
     {% include "../components/modals/cart.html" %}
     {% include "../components/floating-link.html" %}
   </div>
+  {% block script %}{% endblock %}
+  <script src="../js/pages/{% block js %}{% endblock %}.js"></script>
 </body>
 
 </html>
