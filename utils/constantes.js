@@ -1,5 +1,27 @@
 const path = require("path");
 
+class Product {
+  constructor(id, name, price, discount, img, description) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.total = this.price - this.price * this.discount;
+    this.discount = discount;
+    this.img = img;
+    this.description = description;
+    this.link = `https://wa.me/552199999999?text=${this.name}`;
+    this.fprice = (this.price / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    this.fdiscount = `-${this.discount * 100}%`;
+    this.ftotal = (this.total / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+}
+
 const context = {
   static(filename) {
     return path.resolve("/", filename);
@@ -41,73 +63,60 @@ const context = {
       code: "pizzas",
       title: "Pizzas",
       items: [
-        {
-          id: 0,
-          name: "Margherita",
-          price: 7499,
-          fprice: "R$ 74,99",
-          img: "../../img/pexels-renestrgar-18431672.jpg",
-          link: "https://wa.me/552199999999?text=Margherita",
-          discount: "10%",
-          description:
-            "Uma verdadeira celebração da tradição italiana, a pizza Margherita combina molho de tomate fresco, mozzarella derretida e folhas de manjericão aromáticas. Simples, mas deliciosa, ela traz o sabor autêntico que encanta paladares ao redor do mundo.",
-        },
-        {
-          id: 1,
-          name: "Calabresa",
-          price: 8499,
-          fprice: "R$ 84,99",
-          img: "../../img/pexels-muffin-1653877.jpg",
-          link: "https://wa.me/552199999999?text=Calabresa",
-          description:
-            "Com um toque marcante, a pizza Calabresa é uma explosão de sabores. Feita com linguiça calabresa fatiada, cebolas caramelizadas e azeitonas, ela é perfeita para quem busca um sabor mais intenso e picante, equilibrando perfeitamente os ingredientes para uma experiência irresistível.",
-        },
-        {
-          id: 2,
-          name: "Quatro Queijos",
-          price: 8999,
-          fprice: "R$ 89,99",
-          img: "../../img/pexels-grizzlybear-1166120.jpg",
-          link: "https://wa.me/552199999999?text=Quatro Queijos",
-          description:
-            "A pizza Quatro Queijos é um deleite para os amantes de queijo. Com uma combinação rica de mozzarella, gorgonzola, parmesão e provolone, cada pedaço é uma verdadeira festa de sabores e texturas. Ideal para quem aprecia uma experiência cremosa e saborosa, perfeita para compartilhar ou saborear sozinho!",
-        },
+        new Product(
+          0,
+          "Margherita",
+          7499,
+          0.1,
+          "../../img/pexels-renestrgar-18431672.jpg",
+          "Uma verdadeira celebração da tradição italiana, a pizza Margherita combina molho de tomate fresco, mozzarella derretida e folhas de manjericão aromáticas. Simples, mas deliciosa, ela traz o sabor autêntico que encanta paladares ao redor do mundo."
+        ),
+        new Product(
+          1,
+          "Calabresa",
+          8499,
+          0.05,
+          "../../img/pexels-muffin-1653877.jpg",
+          "Uma verdadeira celebração da tradição italiana, a pizza Margherita combina molho de tomate fresco, mozzarella derretida e folhas de manjericão aromáticas. Simples, mas deliciosa, ela traz o sabor autêntico que encanta paladares ao redor do mundo."
+        ),
+        new Product(
+          2,
+          "Quatro Queijos",
+          8999,
+          0,
+          "../../img/pexels-grizzlybear-1166120.jpg",
+          "A pizza Quatro Queijos é um deleite para os amantes de queijo. Com uma combinação rica de mozzarella, gorgonzola, parmesão e provolone, cada pedaço é uma verdadeira festa de sabores e texturas. Ideal para quem aprecia uma experiência cremosa e saborosa, perfeita para compartilhar ou saborear sozinho!"
+        ),
       ],
     },
     {
       code: "drinks",
       title: "Bebidas",
       items: [
-        {
-          id: 3,
-          name: "Coca Cola 2L",
-          price: 499,
-          fprice: "R$ 4,99",
-          img: "../../img/marcus-dietachmair-Ca3x5TayTEw-unsplash.jpg",
-          link: "https://wa.me/552199999999?text=Coca Cola",
-          description:
-            "A Coca-Cola 2L é uma bebida icônica, perfeita para compartilhar em festas ou refeições. Embalada em uma garrafa plástica, oferece um sabor doce e borbulhante, com notas de caramelo e especiarias. É refrescante e ideal para saciar a sede, agradando a paladares de todas as idades. Uma escolha clássica e prática!",
-        },
-        {
-          id: 4,
-          name: "Pepsi 2L",
-          price: 599,
-          fprice: "R$ 5,99",
-          img: "../../img/pexels-gokcegok--9737410.jpg",
-          link: "https://wa.me/552199999999?text=Pepsi",
-          description:
-            "A Pepsi é uma bebida refrescante e saborosa, famosa por seu sabor colasaberoso e levemente cítrico. Embalada em uma garrafa plástica de 2 litros, é perfeita para compartilhar em festas, churrascos ou encontros familiares. Seu sabor inconfundível e efervescência garantem momentos de prazer para todas as idades.",
-        },
-        {
-          id: 5,
-          name: "Guaraná Antarctica 2L",
-          price: 399,
-          fprice: "R$ 3,99",
-          img: "../../img/2l (1).png.webp",
-          link: "https://wa.me/552199999999?text=Guaraná Antarctica",
-          description:
-            "O Guaraná Antarctica é uma bebida refrescante e deliciosa, famosa por seu sabor único e inconfundível. Feita com extrato de guaraná, ela oferece uma explosão de frescor e um leve toque adocicado. Ideal para acompanhar refeições, festas e encontros, essa garrafa de 2 litros é perfeita para compartilhar momentos especiais com amigos e família.",
-        },
+        new Product(
+          3,
+          "Coca Cola 2L",
+          499,
+          0,
+          "../../img/marcus-dietachmair-Ca3x5TayTEw-unsplash.jpg",
+          "A Coca-Cola 2L é uma bebida icônica, perfeita para compartilhar em festas ou refeições. Embalada em uma garrafa plástica, oferece um sabor doce e borbulhante, com notas de caramelo e especiarias. É refrescante e ideal para saciar a sede, agradando a paladares de todas as idades. Uma escolha clássica e prática!"
+        ),
+        new Product(
+          4,
+          "Pepsi 2L",
+          599,
+          0,
+          "../../img/pexels-gokcegok--9737410.jpg",
+          "A Pepsi é uma bebida refrescante e saborosa, famosa por seu sabor colasaberoso e levemente cítrico. Embalada em uma garrafa plástica de 2 litros, é perfeita para compartilhar em festas, churrascos ou encontros familiares. Seu sabor inconfundível e efervescência garantem momentos de prazer para todas as idades."
+        ),
+        new Product(
+          5,
+          "Guaraná Antarctica 2L",
+          399,
+          0,
+          "../../img/2l (1).png.webp",
+          "O Guaraná Antarctica é uma bebida refrescante e deliciosa, famosa por seu sabor único e inconfundível. Feita com extrato de guaraná, ela oferece uma explosão de frescor e um leve toque adocicado. Ideal para acompanhar refeições, festas e encontros, essa garrafa de 2 litros é perfeita para compartilhar momentos especiais com amigos e família."
+        ),
       ],
     },
   ],
