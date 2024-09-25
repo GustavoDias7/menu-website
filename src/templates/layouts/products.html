@@ -11,7 +11,7 @@
           <article class="card secondary">
             <p class="cart-count" :class="{active: cart.getCount('{{card.id}}')}" v-text="cart.getCount('{{card.id}}')">
             </p>
-            <a href="/produto?id={{card.id}}">
+            <a href="/product?id={{card.id}}">
               <figure class="aspect-ratio aspect-1-1 fit">
                 <img src="{{card.img}}" alt="Card Image" />
               </figure>
