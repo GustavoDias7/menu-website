@@ -4,8 +4,13 @@
   p,
   h3,
   strong,
-  img {
+  img,
+  a {
     color: $neutral-color-50 !important;
+  }
+
+  a {
+    text-decoration: underline;
   }
 
   .container {
