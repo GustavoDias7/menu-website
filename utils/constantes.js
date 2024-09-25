@@ -5,8 +5,8 @@ class Product {
     this.id = id;
     this.name = name;
     this.price = price;
-    this.total = this.price - this.price * this.discount;
     this.discount = discount;
+    this.total = this.price - this.price * this.discount;
     this.img = img;
     this.description = description;
     this.link = `https://wa.me/552199999999?text=${this.name}`;
