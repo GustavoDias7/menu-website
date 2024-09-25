@@ -1,0 +1,21 @@
+{% extends "../bases/base.njk" %}
+
+{% block title %}Produto{% endblock %}
+
+{% block css %}product{% endblock %}
+{% block js %}product{% endblock %}
+
+{% block content %}
+{% include "../layouts/details.html" %}
+{% endblock %}
+
+{% block script %}
+<script>
+  const str = "{{ getProducts() }}".replace(/&quot;/ig, '"')
+  const products = JSON.parse(str);
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+  const product = products.filter(item => item.id == productId)[0]
+
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+<section class="section">
+  <div class="container md:container">
+    <div class="details">
+      <div class="container">
+        <div class="g-root g-no-hidden g-gap-2 sm:g-gap-4">
+          <div class="g-row">
+            <div class="g-item-12 md:g-item-7">
+              <figure class="aspect-ratio aspect-1-1 fit">
+                <img :src="product.img" :alt="product.name" />
+              </figure>
+            </div>
+            <div class="g-item-12 md:g-item-5">
+              <aside class="main-infos">
+                <article>
+                  <header>
+                    <h2 class="text-xl sm:text-2xl text-color-primary" v-text="product.name">
+                    </h2>
+                  </header>
+                  <section>
+                    <ul>
+                      <li class="text-base"> <strong>Descrição:</strong> <span v-text="product.description"></span>
+                      </li>
+                      <li class="text-base" v-if="product.discount"> <strong>Desconto:</strong> <span
+                          v-text="product.discount"></span>
+                      </li>
+                    </ul>
+                  </section>
+                  <footer>
+                    <li> <strong>Total:</strong> <span v-text="product.fprice"></span> </li>
+                  </footer>
+                </article>
+                <button class="gn-button pm-button full small sm:regular"
+                  @click="cart.addItem(product.id,product.name,product.price,product.img)">Adicionar ao
+                  carrinho
+                </button>
+                <button class="gn-button sc-button full small sm:regular" @click="openCart">
+                  Abrir carrinho
+                </button>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
