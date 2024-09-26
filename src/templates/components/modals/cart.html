@@ -12,7 +12,7 @@
         <div class="g-row">
           <div v-for="item in cart.cart" class="g-item-12">
             <div class="cart-item">
-              <a href="/" class="img">
+              <a :href="item.link" class="img">
                 <figure class="aspect-ratio aspect-1-1 fit">
                   <img :src="item.img" alt="Placeholder" />
                 </figure>

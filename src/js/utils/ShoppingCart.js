@@ -15,6 +15,7 @@ class ShoppingCart {
     if (Object.hasOwn(obj, "count")) item["count"] = Number(obj.count);
     if (Object.hasOwn(obj, "img")) item["img"] = obj.img;
     if (Object.hasOwn(obj, "discount")) item["discount"] = Number(obj.discount);
+    if (Object.hasOwn(obj, "link")) item["link"] = obj.link;
 
     return item;
   }
@@ -127,9 +128,17 @@ class ShoppingCart {
       this.fee = Number(value);
     }
   }
-  addItem(id, name, price, img, discount) {
+  addItem(id, name, price, img, discount, link) {
     this.syncCart();
-    const item = this.itemFactory({ id, name, price, count: 1, img, discount });
+    const item = this.itemFactory({
+      id,
+      name,
+      price,
+      count: 1,
+      img,
+      discount,
+      link,
+    });
     const itemIndex = this.findItemIndex(item.id);
     if (itemIndex === -1) this.cart.push(item);
     else this.incrementCount(itemIndex);

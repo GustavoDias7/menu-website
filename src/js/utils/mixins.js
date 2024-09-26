@@ -8,10 +8,6 @@ const mainMixin = {
         cart: false,
       },
       cart: new ShoppingCart(),
-      accordion: {
-        state: false,
-        index: null,
-      },
     };
   },
   methods: {
@@ -27,23 +23,6 @@ const mainMixin = {
     },
     closeCart() {
       this.closeModal("cart");
-    },
-    handleAccordion(index) {
-      if (this.accordion.state == false) {
-        this.accordion.state = true;
-        this.accordion.index = index;
-      } else if (
-        this.accordion.state == true &&
-        this.accordion.index == index
-      ) {
-        this.accordion.state = false;
-        this.accordion.index = null;
-      } else if (
-        this.accordion.state == true &&
-        this.accordion.index != index
-      ) {
-        this.accordion.index = index;
-      }
     },
     active(data) {
       return { active: data !== "" };

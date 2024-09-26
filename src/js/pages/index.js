@@ -9,9 +9,32 @@ const app = createApp({
     return {};
   },
   data() {
-    return {};
+    return {
+      accordion: {
+        state: false,
+        index: null,
+      },
+    };
   },
-  methods: {},
+  methods: {
+    handleAccordion(index) {
+      if (this.accordion.state == false) {
+        this.accordion.state = true;
+        this.accordion.index = index;
+      } else if (
+        this.accordion.state == true &&
+        this.accordion.index == index
+      ) {
+        this.accordion.state = false;
+        this.accordion.index = null;
+      } else if (
+        this.accordion.state == true &&
+        this.accordion.index != index
+      ) {
+        this.accordion.index = index;
+      }
+    },
+  },
 });
 
 app.mount("#app");

@@ -34,8 +34,8 @@
                   </footer>
                 </article>
                 <button class="gn-button pm-button full small sm:regular"
-                  @click="cart.addItem(product.id,product.name,product.price,product.img)">Adicionar ao
-                  carrinho
+                  @click="cart.addItem(product.id,product.name,product.price,product.img,product.discount,`/product?id=${product.id}`)">Adicionar
+                  ao carrinho
                 </button>
                 <button class="gn-button sc-button full small sm:regular" @click="openCart">
                   Abrir carrinho
