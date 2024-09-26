@@ -1,7 +1,7 @@
 .contact-bar {
   background-color: $primary-color-50;
   box-shadow: $box-shadow-200;
-  padding: 8px;
+  padding: 8px 0px;
 
   .container {
     @include flex-center-between;

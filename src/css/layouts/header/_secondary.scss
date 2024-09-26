@@ -32,16 +32,25 @@
     @include square(20px);
     @include background-image(pathImages("menu.svg"));
   }
-}
 
-@include md {
-  .header.secondary {
+  @include md {
     nav .link {
       display: none;
     }
 
     .menu-button {
       display: block;
+    }
+  }
+
+  @include sm {
+    .container {
+      height: 48px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      color: $primary-color-600;
     }
   }
 }
