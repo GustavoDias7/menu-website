@@ -3,7 +3,7 @@
   z-index: 3;
   @include insert;
   @include opacity(false);
-  transition: $primary-transition;
+  transition: opacity $primary-transition;
   background-color: $opacity-color-100;
 
   &.active {
@@ -54,20 +54,24 @@
 
   &.secondary {
     .modal-content {
+      $content-width: 480px;
+
+      position: absolute;
+      top: 0px;
+      right: -$content-width;
       display: flex;
       flex-direction: column;
-      $content-width: 480px;
       @include max-width($content-width);
-      margin-right: -100%;
-      margin-left: auto;
+      // margin-right: -100%;
+      // margin-left: auto;
       height: 100vh;
       padding: 20px;
       background-color: $neutral-color-50;
-      transition: margin-right $primary-transition;
+      transition: right $primary-transition;
     }
 
     &.active .modal-content {
-      margin-right: 0px;
+      right: 0;
     }
 
     $section-margin-bottom: 20px;
