@@ -13,13 +13,13 @@
               <aside class="main-infos">
                 <article>
                   <header>
-                    <h2 class="text-xl sm:text-2xl text-color-primary" v-text="product.name">
+                    <h2 class="text-xl sm:text-2xl text-color-primary" v-text="`${product.name}`">
                     </h2>
                   </header>
                   <section>
                     <ul>
-                      <li class="text-base text-mb-2"> <strong>Descrição:</strong> <span
-                          v-text="product.description"></span>
+                      <li class="text-base text-mb-2">
+                        <strong>Descrição:</strong> <span v-text="product.description"></span>
                       </li>
                       <li class="text-base text-mb-2" v-if="product.discount">
                         <strong>Preço:</strong> <span v-text="product.fprice"></span>
@@ -27,15 +27,33 @@
                       <li class="text-base text-mb-2" v-if="product.discount">
                         <strong>Desconto:</strong> <span v-text="product.fdiscount"></span>
                       </li>
+                      <li v-if="product.sizes" class="text-base">
+                        <strong>Tamanho:</strong> <br>
+                        <ul class="multi-buttons">
+                          <li v-if="product.sizes" v-for="size in product.sizes">
+                            <a v-if="!(size.id === product.size.id)" class="size"
+                              :href="`/product/?id=${size.product_id}&size=${size.id}`"
+                              v-text="size.short_name || size.name" :title="size.name"></a>
+                            <p v-else="" class="size active" v-text="size.short_name || size.name" :title="size.name">
+                            </p>
+                          </li>
+                        </ul>
+                      </li>
                     </ul>
+
                   </section>
                   <footer>
                     <li> <strong>Total:</strong> <span v-text="product.ftotal"></span> </li>
                   </footer>
                 </article>
-                <button class="gn-button pm-button full small sm:regular"
-                  @click="cart.addItem(product.id,product.name,product.price,product.img,product.discount,`/product?id=${product.id}`)">Adicionar
-                  ao carrinho
+                <button class="gn-button pm-button full small sm:regular" @click="cart.addItem(
+                    `${product.id}`,
+                    `${product.name}${' ' + product.size?.name}`,
+                    product.price,
+                    product.img,
+                    product.discount,
+                    product.link
+                  )">Adicionar ao carrinho
                 </button>
                 <button class="gn-button sc-button full small sm:regular" @click="openCart">
                   Abrir carrinho
@@ -45,7 +63,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>

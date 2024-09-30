@@ -6,7 +6,7 @@ class ShoppingCart {
   itemFactory(obj) {
     const item = {};
 
-    if (Object.hasOwn(obj, "id")) item["id"] = Number(obj.id);
+    if (Object.hasOwn(obj, "id")) item["id"] = obj.id;
     if (Object.hasOwn(obj, "name")) item["name"] = obj.name;
     if (Object.hasOwn(obj, "price")) {
       item["price"] = Number(obj.price);
