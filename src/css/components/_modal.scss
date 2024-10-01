@@ -59,19 +59,20 @@
       position: absolute;
       top: 0px;
       right: -$content-width;
+
+      transform: translateX(0);
+      transition: transform 0.5s ease 0s;
+
       display: flex;
       flex-direction: column;
       @include max-width($content-width);
-      // margin-right: -100%;
-      // margin-left: auto;
       height: 100vh;
       padding: 20px;
       background-color: $neutral-color-50;
-      transition: right $primary-transition;
     }
 
     &.active .modal-content {
-      right: 0;
+      transform: translateX(-480px);
     }
 
     $section-margin-bottom: 20px;
