@@ -91,7 +91,7 @@
         &:hover,
         &:focus {
           opacity: 0.6;
-          transition: $primary-transition;
+          transition: opacity $primary-transition;
         }
       }
     }
@@ -122,41 +122,43 @@
         overflow: hidden;
         align-self: flex-start;
         flex-shrink: 0;
+
+        @include sm {
+          @include square(48px);
+        }
       }
 
       .cart-item-center {
         flex: auto;
 
-        h3,
+        h3 {
+          a {
+            color: $neutral-color-800;
+          }
+        }
+
         .counter {
           margin-bottom: 8px;
         }
 
-        h3 {
+        .price {
+          @include flex-align-center;
+          gap: 6px;
+
+          s {
+            text-decoration-color: $red-color-500;
+            text-decoration-thickness: 2px;
+          }
+
           .discount {
+            font-size: .75rem;
+            line-height: 1rem;
+
             user-select: none;
-            padding: 2px;
+            padding: 2px 4px;
             color: $neutral-color-50;
             background-color: $primary-color-600;
             border-radius: 4px;
-            margin-left: 6px;
-          }
-        }
-
-        s {
-          position: relative;
-          text-decoration: none;
-          margin-right: 12px;
-
-          &::after {
-            content: "";
-            position: absolute;
-            top: 8px;
-            left: -4px;
-            display: inline-block;
-            width: calc(100% + 8px);
-            height: 2px;
-            background-color: $red-color-500;
           }
         }
       }
@@ -167,6 +169,11 @@
         @include background-image(pathImages("circle-close.svg"));
         flex-shrink: 0;
       }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid $neutral-color-400;
     }
 
     .modal-footer {

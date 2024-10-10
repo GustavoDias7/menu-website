@@ -12,7 +12,7 @@
   border: none;
   outline: none;
   background-color: $neutral-color-50;
-  transition: all 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
   user-select: none;
 
   &:focus,
