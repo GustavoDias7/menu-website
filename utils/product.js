@@ -232,7 +232,7 @@ const products = [
       new Product({
         id: 10,
         code: "drinks",
-        name: "Guaraná Antarctica",
+        name: "G. Antarctica",
         price: 399,
         discount: 0,
         description:
