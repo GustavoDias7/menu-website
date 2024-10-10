@@ -4,8 +4,8 @@
     padding: 32px;
 
     &.dividers {
-      border-right: 2px solid rgba(73, 78, 92, 0.2);
-      border-left: 2px solid rgba(73, 78, 92, 0.2);
+      border-right: 2px solid $neutral-color-200;
+      border-left: 2px solid $neutral-color-200;
     }
 
     .icon {
@@ -41,9 +41,7 @@
     }
 
     .map {
-      iframe {
-        margin-top: 20px;
-      }
+      margin-top: 20px;
     }
   }
 }
